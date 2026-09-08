@@ -302,7 +302,7 @@ WHERE first_name LIKE '%a%';
 ---
 ## Part 10: ORDER BY — Sorting Results
 
-ORDER BY is used to sort query results.
+**ORDER BY** is used to sort query results.
 
 Sort Marks from Lowest to Highest
 ```sql
@@ -310,7 +310,7 @@ SELECT *
 FROM students
 ORDER BY marks ASC;
 ```
-_ASC means ascending order._
+>ASC means ascending order
 
 Sort Marks from Highest to Lowest
 
@@ -319,7 +319,7 @@ SELECT *
 FROM students
 ORDER BY marks DESC;
 ```
-DESC means descending order.
+>DESC means descending order.
 
 Sort by Age
 ```sql
