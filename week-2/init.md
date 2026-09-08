@@ -159,10 +159,171 @@ will delete all records from the table.
 ## Part 6: WHERE — Filtering Data
 
 The **WHERE clause** allows us to retrieve records that meet a specific condition.
-Example 1: Students from Nairobi
+**Example 1:** Students from Nairobi
 ```sql
 SELECT *
 FROM students
 WHERE location = 'Nairobi';
 ```
+**Example 2:** Students Taking Database
+```sql
+SELECT *
+FROM students
+WHERE course = 'Database';
+```
+**Example 3:** Students with Marks Greater Than 80
+```sql
+SELECT *
+FROM students
+WHERE marks > 80;
+```
+**Example 4:** Students Under 21
+```sql
+SELECT *
+FROM students
+WHERE age < 21;
+```
+---
+## Part 7: Comparison Operators
 
+Introduce the following operators:
+Students with marks greater than or equal to 70:
+```sql
+SELECT *
+FROM students
+WHERE marks >= 70;
+```
+Students with marks less than 60:
+```sql
+SELECT *
+FROM students
+WHERE marks < 60;
+```
+Students who are not from Nairobi:
+```sql
+SELECT *
+FROM students
+WHERE location <> 'Nairobi';
+```
+Students who are exactly 22 years old:
+```sql
+SELECT *
+FROM students
+WHERE age = 22;
+```
+---
+## Part 8: Logical Operators with WHERE
+
+Students should also practice:
+
+- AND
+- OR
+- NOT
+
+#### AND
+
+Both conditions must be true.
+
+Find students from Nairobi who scored more than 80:
+```sql
+SELECT *
+FROM students
+WHERE location = 'Nairobi'
+AND marks > 80;
+```
+#### OR
+
+At least one condition must be true.
+
+Find students from Nairobi or Mombasa:
+```sql
+SELECT *
+FROM students
+WHERE location = 'Nairobi'
+OR location = 'Mombasa';
+```
+
+#### NOT
+
+Exclude a condition.
+
+Find students who are not taking Python:
+```sql
+SELECT *
+FROM students
+WHERE NOT course = 'Python';
+```
+---
+## Part 9: Other Useful WHERE Operators
+
+Once students understand the basic operators, introduce these:
+
+#### BETWEEN
+
+Find students whose marks are between 70 and 90:
+```sql
+SELECT *
+FROM students
+WHERE marks BETWEEN 70 AND 90;
+```
+#### IN
+
+Find students from Nairobi, Kisumu, or Mombasa:
+
+```sql
+SELECT *
+FROM students
+WHERE location IN ('Nairobi', 'Kisumu', 'Mombasa');
+```
+
+#### LIKE
+
+Find students whose first name starts with J:
+```sql
+SELECT *
+FROM students
+WHERE first_name LIKE 'J%';
+```
+
+Find students whose last name ends with i:
+
+```sql
+SELECT *
+FROM students
+WHERE last_name LIKE '%i';
+```
+
+Find students whose first name contains a:
+```sql
+SELECT *
+FROM students
+WHERE first_name LIKE '%a%';
+```
+---
+## Part 10: ORDER BY — Sorting Results
+
+ORDER BY is used to sort query results.
+
+Sort Marks from Lowest to Highest
+```sql
+SELECT *
+FROM students
+ORDER BY marks ASC;
+```
+_ASC means ascending order._
+
+Sort Marks from Highest to Lowest
+
+```sql
+SELECT *
+FROM students
+ORDER BY marks DESC;
+```
+DESC means descending order.
+
+Sort by Age
+```sql
+SELECT *
+FROM students
+ORDER BY age ASC;
+```
