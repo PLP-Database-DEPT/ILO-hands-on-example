@@ -327,3 +327,36 @@ SELECT *
 FROM students
 ORDER BY age ASC;
 ```
+---
+
+## Part 11: Combining WHERE and ORDER BY
+
+This is an important concept for students to practice.
+
+Find students taking Database and sort them from highest to lowest marks:
+
+```sql
+SELECT *
+FROM students
+WHERE course = 'Database'
+ORDER BY marks DESC;
+```
+
+Find students from Nairobi who scored at least 70, then sort them alphabetically:
+
+```sql
+SELECT *
+FROM students
+WHERE location = 'Nairobi'
+AND marks >= 70
+ORDER BY first_name ASC;
+```
+
+Find Python students and display them from the youngest to the oldest:
+
+```sql
+SELECT *
+FROM students
+WHERE course = 'Python'
+ORDER BY age ASC;
+```
