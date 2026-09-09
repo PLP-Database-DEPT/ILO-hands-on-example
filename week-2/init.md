@@ -68,14 +68,14 @@ You should now see the email column.
 
 **Rename a Column**
 
-For example, to rename city to location:
+**For example, to rename city to location:**
 ```sql
 ALTER TABLE students
 RENAME COLUMN city TO location;
 ```
 **Remove a Column**
 
-If the email column is no longer required:
+**If the email column is no longer required:**
 ```sql
 ALTER TABLE students
 DROP COLUMN email;
@@ -84,7 +84,7 @@ DROP COLUMN email;
 
 ## Part 3: DML — Inserting Data
 
-DML stands for Data Manipulation Language.
+DML stands for **Data Manipulation Language**.
 
 Common DML commands include:
 
@@ -92,7 +92,7 @@ Common DML commands include:
 - UPDATE
 - DELETE
 
-Let's add some students to our table.
+**Let's add some students to our table.**
 
 ```sql
 INSERT INTO students
@@ -117,14 +117,14 @@ SELECT * FROM students;
 ---
 ## Part 4: DML — Updating Data
 
-Suppose John's marks were entered incorrectly and should be 90.
+**Suppose John's marks were entered incorrectly and should be 90.**
 
 ```sql
 UPDATE students
 SET marks = 90
 WHERE student_id = 1;
 ```
-Verify the change:
+**Verify the change:**
 
 ```sql
 SELECT * FROM students
@@ -134,7 +134,7 @@ WHERE student_id = 1;
 
 ## Part 5: DML — Deleting Data
 
-Suppose we want to remove student with ID 5.
+**Suppose we want to remove student with ID 5.**
 
 ```sql
 DELETE FROM students
@@ -159,6 +159,7 @@ will delete all records from the table.
 ## Part 6: WHERE — Filtering Data
 
 The **WHERE clause** allows us to retrieve records that meet a specific condition.
+
 **Example 1:** Students from Nairobi
 ```sql
 SELECT *
@@ -186,26 +187,25 @@ WHERE age < 21;
 ---
 ## Part 7: Comparison Operators
 
-Introduce the following operators:
-Students with marks greater than or equal to 70:
+**Students with marks greater than or equal to 70:**
 ```sql
 SELECT *
 FROM students
 WHERE marks >= 70;
 ```
-Students with marks less than 60:
+**Students with marks less than 60:**
 ```sql
 SELECT *
 FROM students
 WHERE marks < 60;
 ```
-Students who are not from Nairobi:
+**Students who are not from Nairobi:**
 ```sql
 SELECT *
 FROM students
 WHERE location <> 'Nairobi';
 ```
-Students who are exactly 22 years old:
+**Students who are exactly 22 years old:**
 ```sql
 SELECT *
 FROM students
@@ -213,8 +213,6 @@ WHERE age = 22;
 ```
 ---
 ## Part 8: Logical Operators with WHERE
-
-Students should also practice:
 
 - AND
 - OR
@@ -224,7 +222,7 @@ Students should also practice:
 
 Both conditions must be true.
 
-Find students from Nairobi who scored more than 80:
+**Find students from Nairobi who scored more than 80:**
 ```sql
 SELECT *
 FROM students
@@ -235,7 +233,7 @@ AND marks > 80;
 
 At least one condition must be true.
 
-Find students from Nairobi or Mombasa:
+**Find students from Nairobi or Mombasa:**
 ```sql
 SELECT *
 FROM students
@@ -247,7 +245,7 @@ OR location = 'Mombasa';
 
 Exclude a condition.
 
-Find students who are not taking Python:
+**Find students who are not taking Python:**
 ```sql
 SELECT *
 FROM students
@@ -256,11 +254,9 @@ WHERE NOT course = 'Python';
 ---
 ## Part 9: Other Useful WHERE Operators
 
-Once students understand the basic operators, introduce these:
-
 #### BETWEEN
 
-Find students whose marks are between 70 and 90:
+**Find students whose marks are between 70 and 90:**
 ```sql
 SELECT *
 FROM students
@@ -268,7 +264,7 @@ WHERE marks BETWEEN 70 AND 90;
 ```
 #### IN
 
-Find students from Nairobi, Kisumu, or Mombasa:
+**Find students from Nairobi, Kisumu, or Mombasa:**
 
 ```sql
 SELECT *
@@ -278,14 +274,14 @@ WHERE location IN ('Nairobi', 'Kisumu', 'Mombasa');
 
 #### LIKE
 
-Find students whose first name starts with J:
+**Find students whose first name starts with J:**
 ```sql
 SELECT *
 FROM students
 WHERE first_name LIKE 'J%';
 ```
 
-Find students whose last name ends with i:
+**Find students whose last name ends with i:**
 
 ```sql
 SELECT *
@@ -293,7 +289,8 @@ FROM students
 WHERE last_name LIKE '%i';
 ```
 
-Find students whose first name contains a:
+**Find students whose first name contains a:**
+
 ```sql
 SELECT *
 FROM students
@@ -304,7 +301,7 @@ WHERE first_name LIKE '%a%';
 
 **ORDER BY** is used to sort query results.
 
-Sort Marks from Lowest to Highest
+**Sort Marks from Lowest to Highest**
 ```sql
 SELECT *
 FROM students
@@ -312,7 +309,7 @@ ORDER BY marks ASC;
 ```
 >ASC means ascending order
 
-Sort Marks from Highest to Lowest
+**Sort Marks from Highest to Lowest**
 
 ```sql
 SELECT *
@@ -321,7 +318,7 @@ ORDER BY marks DESC;
 ```
 >DESC means descending order.
 
-Sort by Age
+**Sort by Age**
 ```sql
 SELECT *
 FROM students
@@ -331,9 +328,7 @@ ORDER BY age ASC;
 
 ## Part 11: Combining WHERE and ORDER BY
 
-This is an important concept for students to practice.
-
-Find students taking Database and sort them from highest to lowest marks:
+**Find students taking Database and sort them from highest to lowest marks:**
 
 ```sql
 SELECT *
@@ -342,7 +337,7 @@ WHERE course = 'Database'
 ORDER BY marks DESC;
 ```
 
-Find students from Nairobi who scored at least 70, then sort them alphabetically:
+**Find students from Nairobi who scored at least 70, then sort them alphabetically:**
 
 ```sql
 SELECT *
@@ -352,7 +347,7 @@ AND marks >= 70
 ORDER BY first_name ASC;
 ```
 
-Find Python students and display them from the youngest to the oldest:
+**Find Python students and display them from the youngest to the oldest:**
 
 ```sql
 SELECT *
