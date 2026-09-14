@@ -154,3 +154,184 @@ COMMIT;
 #### Discussion Question
 > What would happen if we ran ROLLBACK instead of COMMIT?
 ---
+
+#### Part 6: Understanding Autocommit
+
+MySQL normally uses autocommit, meaning individual changes can be committed automatically.
+
+You can turn it off when you want to explicitly control transactions.
+
+```sql
+SET autocommit = 0;
+```
+
+Now you can control when changes are saved:
+
+```sql
+START TRANSACTION;
+
+UPDATE users
+SET email = 'new@email.com'
+WHERE id = 1;
+
+COMMIT;
+```
+
+You can turn autocommit back on with:
+
+```sql
+SET autocommit = 1;
+```
+
+For beginners, emphasize:
+
+**Autocommit ON:** MySQL automatically commits changes.
+
+**Autocommit OFF:** You control when changes are committed.
+
+---
+
+#### Part 7: Aggregate Functions
+
+Now switch back to the sales database.
+
+```sql
+USE sales;
+```
+
+Aggregate functions allow us to perform calculations on multiple rows.
+
+The main functions we will use are:
+
+| Function | Purpose |
+|---|---|
+| `COUNT()` | Counts the number of records |
+| `SUM()` | Calculates the total of numeric values |
+| `AVG()` | Calculates the average value |
+| `MAX()` | Finds the highest value |
+| `MIN()` | Finds the lowest value |
+
+
+**Example 1: COUNT()**
+
+How many products are in the database?
+
+```sql
+SELECT COUNT(*) AS total_products
+FROM products;
+```
+
+
+**Example 2: AVG()**
+
+What is the average product buying price?
+
+```sql
+SELECT AVG(buyPrice) AS average_price
+FROM products;
+```
+
+```sql
+SELECT 
+    ROUND(AVG(buyPrice), 2) AS average_price
+FROM products;
+```
+
+**Example 3: MAX() and MIN()**
+
+Find the most expensive and cheapest products based on buyPrice.
+
+```sql
+SELECT 
+    MAX(buyPrice) AS highest_price,
+    MIN(buyPrice) AS lowest_price
+FROM products;
+```
+
+---
+
+#### Part 8: SUM() with Calculations
+
+Let's use the orderdetails table.
+
+We want to calculate the total value of all items ordered.
+
+The value of each item is:
+```sql
+quantityOrdered × priceEach
+```
+
+So we can write:
+```sql
+SELECT 
+    SUM(quantityOrdered * priceEach) AS total_sales
+FROM orderdetails;
+```
+
+This gives us the total sales value across all order details.
+
+---
+#### Part 9: GROUP BY
+
+Aggregate functions become even more useful when combined with GROUP BY.
+
+For example, instead of asking:
+
+How many orders are there?
+
+We can ask:
+
+How many orders are there for each status?
+
+```sql
+SELECT 
+    status,
+    COUNT(*) AS total_orders
+FROM orders
+GROUP BY status;
+```
+---
+
+#### Part 10: GROUP BY with SUM()
+
+Let's calculate the total value of each order.
+
+```sql
+SELECT 
+    orderNumber,
+    SUM(quantityOrdered * priceEach) AS order_total
+FROM orderdetails
+GROUP BY orderNumber;
+```
+
+We can also sort the results:
+
+```sql
+SELECT 
+    orderNumber,
+    SUM(quantityOrdered * priceEach) AS order_total
+FROM orderdetails
+GROUP BY orderNumber
+ORDER BY order_total DESC;
+
+```
+
+This shows the orders with the highest total value first.
+---
+
+#### Part 11: HAVING
+
+> WHERE filters individual rows.
+
+HAVING filters groups created by GROUP BY.
+
+For example, suppose we want to find orders whose total value is greater than 1,000.
+
+```sql
+SELECT 
+    orderNumber,
+    SUM(quantityOrdered * priceEach) AS order_total
+FROM orderdetails
+GROUP BY orderNumber
+HAVING order_total > 1000;
+```
