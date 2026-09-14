@@ -1,3 +1,5 @@
+## Week 3 Aggregate Functions
+
 #### Learning Objectives
 
 By the end of this lab, you should be able to:
@@ -12,7 +14,7 @@ By the end of this lab, you should be able to:
 ---
 #### Part 1: Understanding Transactions
 
-A transaction is a sequence of SQL operations that are treated as one unit of work.
+A **transaction** is a sequence of SQL operations that are treated as one unit of work.
 
 For example, imagine transferring money from one bank account to another. We want all related changes to succeed, or none of them should be saved.
 
@@ -30,15 +32,17 @@ Cancels the changes made during the transaction.
 ROLLBACK;
 ```
 ---
-Part 2: Create a Database for the Transaction Lab
+#### Part 2: Create a Database for the Transaction Lab
 
 Create a small database that we can use to experiment with transactions.
+
 ```sql
 CREATE DATABASE stadium;
 
 USE stadium;
 ```
 Create a users table:
+
 ```sql
 CREATE TABLE users (
     id INT PRIMARY KEY,
@@ -60,7 +64,7 @@ Check the data:
 SELECT * FROM users;
 ```
 ---
-Part 3: COMMIT — Saving Changes
+#### Part 3: COMMIT — Saving Changes
 
 Suppose Peter changes his email address.
 
@@ -91,7 +95,7 @@ The change has now been permanently saved.
 
 > Think of COMMIT as saying: "I am happy with these changes. Save them."
 ---
-Part 4: ROLLBACK — Undoing Changes
+#### Part 4: ROLLBACK — Undoing Changes
 
 Now let's make a change that we don't want to keep.
 ```sql
@@ -125,7 +129,7 @@ The email should return to the value it had before the transaction.
 
 ---
 
-Part 5: Multiple Changes in One Transaction
+#### Part 5: Multiple Changes in One Transaction
 
 This is where students can really understand why transactions are useful.
 
@@ -183,8 +187,6 @@ You can turn autocommit back on with:
 SET autocommit = 1;
 ```
 
-For beginners, emphasize:
-
 **Autocommit ON:** MySQL automatically commits changes.
 
 **Autocommit OFF:** You control when changes are committed.
@@ -198,8 +200,7 @@ Now switch back to the sales database.
 ```sql
 USE sales;
 ```
-
-Aggregate functions allow us to perform calculations on multiple rows.
+**Aggregate functions** allow us to perform calculations on multiple rows.
 
 The main functions we will use are:
 
@@ -220,7 +221,6 @@ How many products are in the database?
 SELECT COUNT(*) AS total_products
 FROM products;
 ```
-
 
 **Example 2: AVG()**
 
@@ -315,8 +315,6 @@ GROUP BY orderNumber
 ORDER BY order_total DESC;
 
 ```
-
-This shows the orders with the highest total value first.
 ---
 
 #### Part 11: HAVING
