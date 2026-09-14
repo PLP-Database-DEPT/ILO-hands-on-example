@@ -59,3 +59,98 @@ Check the data:
 ```sql
 SELECT * FROM users;
 ```
+---
+Part 3: COMMIT — Saving Changes
+
+Suppose Peter changes his email address.
+
+Start a transaction:
+```sql
+START TRANSACTION;
+
+UPDATE users
+SET email = 'peter@gmail.com'
+WHERE id = 1;
+```
+Check the data before committing:
+
+```sql
+SELECT * FROM users;
+```
+You should see the updated email.
+
+Now save the transaction:
+```sql
+COMMIT;
+```
+Check the data again:
+```sql
+SELECT * FROM users;
+```
+The change has now been permanently saved.
+
+> Think of COMMIT as saying: "I am happy with these changes. Save them."
+---
+Part 4: ROLLBACK — Undoing Changes
+
+Now let's make a change that we don't want to keep.
+```sql
+START TRANSACTION;
+
+UPDATE users
+SET email = 'wrong@email.com'
+WHERE id = 2;
+```
+Check the data:
+```sql
+SELECT * FROM users
+WHERE id = 2;
+```
+You will see the new email address.
+
+Now undo the transaction:
+
+```sql
+ROLLBACK;
+```
+Check again:
+
+```sql
+SELECT * FROM users
+WHERE id = 2;
+```
+The email should return to the value it had before the transaction.
+
+> Think of ROLLBACK as saying: "I don't want these changes. Undo them."
+
+---
+
+Part 5: Multiple Changes in One Transaction
+
+This is where students can really understand why transactions are useful.
+
+Suppose we want to add a new user and update another user.
+
+```sql
+START TRANSACTION;
+
+INSERT INTO users (id, username, email)
+VALUES (4, 'mary', 'mary@mail.com');
+
+UPDATE users
+SET email = 'sharon@gmail.com'
+WHERE id = 2;
+```
+Check the changes:
+
+```sql
+SELECT * FROM users;
+```
+If everything is correct:
+
+```sql
+COMMIT;
+```
+#### Discussion Question
+> What would happen if we ran ROLLBACK instead of COMMIT?
+---
