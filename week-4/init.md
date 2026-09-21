@@ -1,6 +1,8 @@
 ## Hands-on Class Activity
 ###  Speeding up Queries with Indexes
 
+---
+### Part 1
 First, try running this query without an index:
 ```sql
 SELECT 
@@ -33,12 +35,15 @@ FROM
 WHERE
     jobTitle = 'Sales Rep';
 ```
+---
+### Part 2:
 ### MySQL DROP INDEX statement
 Use the **DROP INDEX** statement to remove an existing index.
 ```sql
 DROP INDEX idxTitle ON employees;
 ```
-
+---
+### Part 3:
 ### MySQL CREATE USER statement
 To create a new user in the MySQL database, you use the **CREATE USER** statement.
 
@@ -50,6 +55,8 @@ To show the users on the current MySQL Server:
 ```sql
 SELECT user FROM mysql.user;
 ```
+---
+### Part 4:
 ### Change MySQL User Password
 To change the password of the a user use the **ALTER** … IDENTIFIED BY statement
 ```sql
