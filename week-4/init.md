@@ -72,6 +72,8 @@ To remove a user account from the MySQL Server, you use the **DROP USER** statem
 ```sql
 DROP USER john@localhost;
 ```
+---
+### Part 5
 ###  MySQL GRANT statement
 You use the **GRANT** statement to assign one or more privileges to a user account.
 
@@ -103,6 +105,8 @@ CREATE USER gerald@localhost IDENTIFIED BY '1234';
 -- giving access to only one table inside the database.
 GRANT SELECT, INSERT ON salesdb.customers TO 'gerald'@'localhost';
 ```
+---
+### Part 6
 ### 🎭 MySQL Roles
 
 MySQL database server may have multiple users with the same set of privileges.
@@ -189,6 +193,8 @@ To delete one or more roles, you use the DROP ROLE statement:
 ```sql
 DROP ROLE barista;
 ```
+--- 
+### Part 7
 ### MySQL REVOKE statement
 
 The **REVOKE** statement revokes one or more privileges from a user account.
