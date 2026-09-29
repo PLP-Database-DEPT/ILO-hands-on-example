@@ -1,11 +1,16 @@
-## 🎯 Hands-on Class Activity
+## Hands-on Class Activity
 _Your mission today as a junior database administrator is to explore how employees, projects, and addresses are connected._
 
 You’ll use different types of **JOINs** to uncover hidden stories inside the database.
-### 🚀 Joins and Relationships
+### Joins and Relationships
+
 #### 📚 Relationships in MySQL
-In databases, relationships describe how tables are connected.
-##### 1️⃣ One-to-One
+
+In databases, relationships describe how tables are connected
+---
+
+### Part 1:
+### One-to-One
 One row in Table A is linked to exactly one row in Table B.
 ```sql
 USE salesdb;
@@ -35,7 +40,10 @@ SELECT S.FullName, C.CardId, C.IssueDate
 FROM staff S
 INNER JOIN IDCard C ON S.staffId = C.staffId;
 ```
-##### 2️⃣ One-to-Many
+---
+### Part 2:
+
+### One-to-Many
 
 One row in Table A can be linked to many rows in Table B.
 
@@ -79,7 +87,11 @@ SELECT D.deptName, E.empName
 FROM Employee E
 RIGHT JOIN Department D ON E.deptId = D.deptId;
 ```
-##### 3️⃣ Many-to-Many
+---
+
+### Part 3:
+
+### Many-to-Many
 
 One row in Table A can be linked to many rows in Table B, and vice versa.
 
@@ -127,7 +139,11 @@ FROM Book B
 INNER JOIN BookAuthor BA ON B.bookId = BA.bookId
 INNER JOIN Author A ON BA.authorId = A.authorId;
 ```
+---
 ## Joins
+
+### Part 4:
+
 #### 🏗️ Database Setup
 We’ve created a simple system with employees, their projects, and where they live.
 ```sql
